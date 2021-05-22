@@ -31,7 +31,7 @@ public class AccountHolder {
     }
 
     public void setHolderUser(String holderUser) {
-        System.out.println("Username set to: ");
+        System.out.println("Set username to: ");
         this.holderUser = holderUser;
     }
 
@@ -41,7 +41,7 @@ public class AccountHolder {
     }
 
     public void setHolderPassword(String holderPassword) {
-        System.out.println("Password set to: ");
+        System.out.println("Set password to: ");
         this.holderPassword = holderPassword;
     }
 }
