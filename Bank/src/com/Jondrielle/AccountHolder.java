@@ -8,33 +8,40 @@ public class AccountHolder {
     private String holderPassword;
 
     public AccountHolder(String holderUser, String holderPassword) {
+        System.out.println("Inside constructor");
         this.holderUser = holderUser;
         this.holderPassword = holderPassword;
+        addUserToAccountHolder(holderUser,holderPassword);
     }
 
     public void addUserToAccountHolder(String userName, String password){
+        System.out.println("Inside addUser");
         if(accountHolders.containsKey(userName)){
-            System.out.println("This username is already taken.Try a different username.");
+            System.out.println("Thanks for coming back to The Bank of Jondrielle");
         }
         else {
-            accountHolders.put(userName, password);
+            accountHolders.put(userName,password);
+            System.out.println("Thanks for joining The Bank of Jondrielle");
         }
-
     }
 
     public String getHolderUser() {
+        System.out.print("Username: ");
         return holderUser;
     }
 
     public void setHolderUser(String holderUser) {
+        System.out.println("Username set to: ");
         this.holderUser = holderUser;
     }
 
     public String getHolderPassword() {
+        System.out.print("Password: ");
         return holderPassword;
     }
 
     public void setHolderPassword(String holderPassword) {
+        System.out.println("Password set to: ");
         this.holderPassword = holderPassword;
     }
 }
