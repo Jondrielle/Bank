@@ -11,7 +11,7 @@ public class Main {
         mainMenuOptions();
     }
 
-    public static <Login> void mainMenuOptions(){
+    public static void mainMenuOptions(){
         System.out.println("Hello welcome to Bank of Jondrielle!\n" +
                 "Enter 1 if you wish to login\n" +
                 "Enter 2 for creating an account");
