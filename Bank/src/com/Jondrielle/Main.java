@@ -42,15 +42,37 @@ public class Main {
      * This method allows the user to determine what they want after they login to The Bank of Jondrielle.
      */
     public static void moreOptions(){
+        int choice = scanner.nextInt();
         System.out.println("Hello, how can I help you today?\n Enter 1 Reset Username\n Enter 2 Reset Password\n " +
                 "Enter 3 Checking Account Balance\n Enter 4 Withdrawl\n Enter 5 Deposit to Account\n Enter 6 Open New Account");
+
+        switch(choice){
+            case 1:
+                resetUsername();
+                System.out.println("Username was reset.");
+                break;
+            case 2:
+                resetPassword();
+                System.out.println("Password was reset.");
+                break;
+            case 3:
+                System.out.println("Your balance is: ");
+                break;
+            case 4:
+                System.out.println("You have withdrawn ");
+                break;
+            case 5:
+                System.out.println("You have deposited ");
+            case 6:
+                System.out.println("You have opened a new Account ");
+        }
     }
 
     /**
      * This method allows the user to reset their password.
      */
     public static void resetPassword(){
-        System.out.println("New password: ");
+        System.out.println("Please enter your new password.\n New password: ");
         String newUserPassword = scanner.next();
     }
 
@@ -58,7 +80,7 @@ public class Main {
      * This method allows the user to reset their username.
      */
     public static void resetUsername(){
-        System.out.println("New username: ");
+        System.out.println("Please enter your new userName.\n New username: ");
         String newUser = scanner.next();
     }
 }
