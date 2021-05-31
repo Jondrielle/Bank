@@ -7,6 +7,7 @@ public class AccountHolder {
     private String holderUser;
     private String holderPassword;
     private long balance;
+    private long overdraftFee;
 
     public AccountHolder(String holderUser, String holderPassword, long balance) {
         this.holderUser = holderUser;
@@ -43,6 +44,19 @@ public class AccountHolder {
      * @return amount being deposited to the balance
      */
     public long deposit(long amountDeposit){
+        if(amountDeposit > 0) {
+            if (getOverdraftFee() < 0 && getOverdraftFee() <= amountDeposit) {
+                System.out.println("Overdraft fee is : " + getOverdraftFee());
+                amountDeposit = amountDeposit + getOverdraftFee();
+                setOverdraftFee(amountDeposit);
+            } else if (getOverdraftFee() < 0 && getOverdraftFee() > amountDeposit)
+                amountDeposit = amountDeposit - overdraftFee;
+        }
+        else{
+            System.out.println("You can not deposit a negative amount into your bank account!");
+            amountDeposit = 0;
+        }
+        setBalance(this.balance + amountDeposit);
         return this.balance + amountDeposit;
     }
 
@@ -52,6 +66,12 @@ public class AccountHolder {
      * @return amount being withdrawn from the account balance
      */
     public long withdrawal(long amountWithdrawal){
+        if(amountWithdrawal > getBalance()) {
+            overdraftFee = overdraftFee - 35;
+            System.out.println("You do not have enough money in your bank account! You have incurred an overdraft fee of $35.");
+        }
+        setBalance(this.balance - amountWithdrawal);
+        System.out.println("Overdraft fee currently: " + Math.abs(getOverdraftFee()));
         return this.balance - amountWithdrawal;
     }
 
@@ -75,10 +95,21 @@ public class AccountHolder {
         this.holderPassword = holderPassword;
     }
     public long getBalance() {
-        return balance;
+        if(balance < 0)
+            return balance = 0;
+        else
+            return balance;
     }
 
     public void setBalance(long balance) {
         this.balance = balance;
+    }
+
+    public void setOverdraftFee(long overdraftFee) {
+        this.overdraftFee = overdraftFee;
+    }
+
+    public long getOverdraftFee() {
+        return overdraftFee;
     }
 }
