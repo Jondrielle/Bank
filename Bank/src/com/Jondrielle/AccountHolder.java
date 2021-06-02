@@ -76,22 +76,18 @@ public class AccountHolder {
     }
 
     public String getHolderUser() {
-        System.out.print("Username: ");
         return holderUser;
     }
 
     public void setHolderUser(String holderUser) {
-        System.out.println("Username was reset.");
         this.holderUser = holderUser;
     }
 
     public String getHolderPassword() {
-        System.out.print("Password: ");
         return holderPassword;
     }
 
     public void setHolderPassword(String holderPassword) {
-        System.out.println("Password was reset.");
         this.holderPassword = holderPassword;
     }
     public long getBalance() {

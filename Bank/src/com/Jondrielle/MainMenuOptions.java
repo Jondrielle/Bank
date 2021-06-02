@@ -1,5 +1,6 @@
 package com.Jondrielle;
 
+import javax.swing.*;
 import java.util.Scanner;
 
 public class MainMenuOptions {
@@ -7,7 +8,7 @@ public class MainMenuOptions {
 
     public static void mainMenuOptions() {
         try {
-            System.out.println("Hello welcome to Bank of Jondrielle!");
+            JOptionPane.showMessageDialog(null,"Hello welcome to Bank of Jondrielle!");
             Thread.sleep(1000);
             System.out.println("Enter 1 if you wish to login\n" +
                     "Enter 2 for creating an account");
@@ -16,9 +17,8 @@ public class MainMenuOptions {
             switch (inputChoice) {
                 case 1:
                     Thread.sleep(500);
-                    System.out.println("Enter userName and password.");
-                    String userName = scanner.next();
-                    String password = scanner.next();
+                    String userName = JOptionPane.showInputDialog("Enter your username: ");
+                    String password = JOptionPane.showInputDialog("Enter your password: ");
                     AccountHolder holder = new AccountHolder(userName, password);
                     moreOptions(holder);
                     break;
@@ -26,9 +26,8 @@ public class MainMenuOptions {
                     Thread.sleep(3000);
                     System.out.println("Lets get you signed up!");
                     Thread.sleep(1000);
-                    System.out.println("Enter a userName and password.");
-                    String newUser = scanner.next();
-                    String newUserPassword = scanner.next();
+                    String newUser = JOptionPane.showInputDialog("Enter your username: ");
+                    String newUserPassword = JOptionPane.showInputDialog("Enter your password: ");
                     AccountHolder newHolder = new AccountHolder(newUser, newUserPassword);
                     moreOptions(newHolder);
                     break;
@@ -55,23 +54,21 @@ public class MainMenuOptions {
                 switch (choice) {
                     case 0:
                         status = false;
+                        JOptionPane.showMessageDialog(null, "Have a good day! You are now logged out.");
                         break;
                     case 1:
-                        System.out.println("Please enter a new username.");
-                        String newUserName = scanner.next();
+                        String newUserName = JOptionPane.showInputDialog("Please enter a new username.");
                         holder.setHolderUser(newUserName);
-                        System.out.println("This is your new username " + holder.getHolderUser());
+                        JOptionPane.showMessageDialog(null, "This is your new username: " + holder.getHolderUser());
                         break;
                     case 2:
-                        System.out.println("Please enter a new password.");
-                        String newUserPassword = scanner.next();
+                        String newUserPassword = JOptionPane.showInputDialog("Please enter a new password.");
                         holder.setHolderPassword(newUserPassword);
-                        System.out.println("This is your new password " + holder.getHolderPassword());
-                        System.out.println("Password was reset.");
+                        JOptionPane.showMessageDialog(null,"This is your new password: " + holder.getHolderPassword());
                         break;
                     case 3:
                         long balanceInquiry = holder.getBalance();
-                        System.out.println("Your balance is: " + balanceInquiry);
+                        JOptionPane.showMessageDialog(null,"Your balance is : " + balanceInquiry);
                         break;
                     case 4:
                         System.out.println("How much do you want to withdraw from your account? Please enter an amount. ");
